@@ -9,35 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SignInForm {
+public class ForgottenPasswordPage {
     private final Wait<WebDriver> wait;
-    private final WebDriver driver;
 
-    public SignInForm(WebDriver driver) {
+    public ForgottenPasswordPage(WebDriver driver) {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        this.driver = driver;
-    }
-
-    public void clickForgotPasswordLink() {
-        WebElement forgottenPasswordLinkElement = wait
-            .until(
-                ExpectedConditions
-                    .elementToBeClickable(
-                        By
-                            .xpath("//a[contains(@class, 'btn-link')]")
-                    )
-            );
-        forgottenPasswordLinkElement.click();
     }
 
     public void clickBackToSignInLink() {
         WebElement forgotPasswordLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("forgot-password-login-link")));
         forgotPasswordLink.click();
-    }
-
-
-    public void enterEmail(String email) {
-        WebElement emailElement = driver.findElement(By.id("email"));
-        emailElement.sendKeys(email);
     }
 }
